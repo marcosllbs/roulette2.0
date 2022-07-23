@@ -33,10 +33,17 @@ public class RouletteManager : MonoBehaviour
     public void SpinRoulette()
     {
         //rouletteGameObject.transform.DORotate(new Vector3(0, 0, Mathf.PingPong(0,360)), rotationDuration, RotateMode.FastBeyond360);
-        float angles = rouletteGameObject.GetComponent<Transform>().localEulerAngles.z;
+        
         isSpining = true;
 
-        rouletteGameObject.transform.DORotate(new Vector3(0, 0, 45), 45f);
+        rouletteGameObject.transform.Rotate(new Vector3(0, 0, 1),Random.Range(1f,45f));
+        
 
+    }
+    public void SpinRouletteStop()
+    {
+        float angles = rouletteGameObject.GetComponent<Transform>().localEulerAngles.z;
+        isSpining = false;
+        Debug.Log($"O angulo e: {angles}");
     }
 }
