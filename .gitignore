@@ -114,3 +114,8 @@ Library/ScriptAssemblies/Assembly-CSharp.pdb
 Library/Search/transactions.db
 Library/SourceAssetDB
 *.dll
+Library/ArtifactDB
+Library/SourceAssetDB
+Logs/AssetImportWorker0-prev.log
+Logs/AssetImportWorker1-prev.log
+UserSettings/Layouts/default-2021.dwlt
