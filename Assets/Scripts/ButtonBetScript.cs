@@ -10,9 +10,9 @@ public class ButtonBetScript : MonoBehaviour
     public Button betButton;
     public int numberChoice;
 
-    public int ReturnValue()
-    {
-        return numberChoice;
-    }
+    //public int ReturnValue()
+    //{
+    //    return numberChoice;
+    //}
 
 }

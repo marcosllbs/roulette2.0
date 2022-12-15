@@ -5,7 +5,6 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine.UI;
 
-
 public class RouletteManager : MonoBehaviour
 {
     [SerializeField] GameObject rouletteGameObject;
@@ -17,6 +16,7 @@ public class RouletteManager : MonoBehaviour
     public int points = 0;
 
     public List<ButtonBetScript> buttonBetScriptsList = new List<ButtonBetScript>();
+    public ButtonBetScript clickedButton;
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +50,7 @@ public class RouletteManager : MonoBehaviour
             angles = (int)((rouletteGameObject.GetComponent<Transform>().localEulerAngles.z) / 45) + 1;
             Debug.Log($"O angulo e: {angles}");
             
-            if ()
+            if (angles == clickedButton.numberChoice)
             {
                 points += 50;
                 pointsDisplay.SetText(points.ToString());
@@ -59,7 +59,7 @@ public class RouletteManager : MonoBehaviour
             {
                 points -= 10;
                 pointsDisplay.SetText(points.ToString());
-                //Debug.Log();
+                Debug.Log(clickedButton.numberChoice);
             }
         }
         angles = 0;
@@ -76,9 +76,9 @@ public class RouletteManager : MonoBehaviour
             buttonsInstatiated = Instantiate(buttonPrefab.gameObject, transformToInstantiate);
             buttonsInstantiatedScript = buttonsInstatiated.GetComponent<ButtonBetScript>();
             buttonBetScriptsList.Add(buttonsInstantiatedScript);
-            InitializeButtons(buttonBetScriptsList[i].betButton, buttonBetScriptsList[i].betNumber, i);
-            buttonBetScriptsList[i].numberChoice = (i+1);
-            
+            InitializeButtons(buttonsInstantiatedScript.betButton, buttonsInstantiatedScript.betNumber, i);
+            buttonsInstantiatedScript.numberChoice = (i+1);
+            Debug.Log($"O numberChoice e: {i + 1}");
         }
     }
 
@@ -91,7 +91,7 @@ public class RouletteManager : MonoBehaviour
 
     public void InitializeButtons(Button button, TMP_Text text, int i)
     {
-        button.onClick.AddListener(() => StartSpin()); LastHope(i);
+        button.onClick.AddListener(() => { StartSpin(); clickedButton = buttonBetScriptsList[i]; });
         text.SetText((i+1).ToString());
     }
 
