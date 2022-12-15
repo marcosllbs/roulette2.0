@@ -50,7 +50,7 @@ public class RouletteManager : MonoBehaviour
             angles = (int)((rouletteGameObject.GetComponent<Transform>().localEulerAngles.z) / 45) + 1;
             Debug.Log($"O angulo e: {angles}");
             
-            if (angles == )
+            if ()
             {
                 points += 50;
                 pointsDisplay.SetText(points.ToString());
@@ -59,7 +59,7 @@ public class RouletteManager : MonoBehaviour
             {
                 points -= 10;
                 pointsDisplay.SetText(points.ToString());
-                Debug.Log();
+                //Debug.Log();
             }
         }
         angles = 0;
